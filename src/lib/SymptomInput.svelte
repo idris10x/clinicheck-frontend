@@ -1,17 +1,17 @@
 <script>
     import { Mic, MicOff } from 'lucide-svelte';
   
-    let isListening = false;
+    let isListening = $state(false);
     let recognition;
-    let symptomText = '';
-    let age = '';
-    let country = 'Nigeria';
-    let gender = '';
-    let diagnosisResults = [];
-    let isLoading = false;
-    let errorMessage = '';
-    let cachedResponse = null;
-    let hasSubmitted = false;
+    let symptomText = $state('');
+    let age = $state('');
+    let country = $state('Nigeria');
+    let gender = $state('');
+    let diagnosisResults = $state([]);
+    let isLoading = $state(false);
+    let errorMessage = $state('');
+    let cachedResponse = $state(null);
+    let hasSubmitted = $state(false);
     
     function toggleSpeechRecognition() {
         // @ts-ignore
@@ -107,7 +107,7 @@
 
         try {
             const demographicString = `${age}, ${country}, ${gender}`;
-            const response = await fetch('https://5000-firebase-clinicheck-backend-1747325589411.cluster-c23mj7ubf5fxwq6nrbev4ugaxa.cloudworkstations.dev/analyse-symptoms', {
+            const response = await fetch(import.meta.env.VITE_SYMPTOM_API + '/analyse-symptoms', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -140,7 +140,7 @@
 </script>
 
 <div class="flex flex-col items-center min-h-screen bg-gray-50 p-4 pt-8">
-    <form on:submit|preventDefault={handleSubmit} class="w-full max-w-md p-8 bg-white rounded-lg shadow-sm border border-gray-200 mb-6">
+    <form onsubmit={handleSubmit} class="w-full max-w-md p-8 bg-white rounded-lg shadow-sm border border-gray-200 mb-6">
         <h2 class="text-2xl font-bold text-gray-800 mb-6 text-left">Clinicheck</h2>
         <div class="mb-4">
             <label for="age" class="block text-gray-700 font-medium mb-2">Age</label>
@@ -193,7 +193,7 @@
               >
               <button
                 type="button"
-                on:click={toggleSpeechRecognition}
+                onclick={toggleSpeechRecognition}
                 class="absolute inset-y-0 right-0 flex items-center pr-3 {isListening ? 'bg-red-100' : ''}"
               >
                 {#if isListening}
