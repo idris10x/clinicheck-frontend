@@ -140,10 +140,10 @@
 </script>
 
 <div class="flex flex-col items-center min-h-screen bg-gray-50 p-4 pt-8">
-    <form onsubmit={handleSubmit} class="w-full max-w-md p-8 bg-white rounded-lg shadow-sm border border-gray-200 mb-6">
-        <h2 class="text-2xl font-bold text-gray-800 mb-6 text-left">Clinicheck</h2>
+    <form onsubmit={handleSubmit} class="w-full max-w-md p-8 bg-white rounded-[20px] shadow-xl border border-gray-200 mb-6">
+        <h2 class="text-2xl font-bold text-[#3E73A6] mb-6 text-left">Clinicheck</h2>
         <div class="mb-4">
-            <label for="age" class="block text-gray-700 font-medium mb-2">Age</label>
+            <label for="age" class="block text-[#3E73A6] font-semibold mb-2">Age</label>
             <input 
             type="text" 
             id="age"
@@ -155,7 +155,7 @@
         </div>
       
         <div class="mb-4">
-            <label for="country" class="block text-gray-700 font-medium mb-2">Country of Residence</label>
+            <label for="country" class="block text-[#3E73A6] font-semibold mb-2">Country of Residence</label>
             <input 
             type="text" 
             id="country"
@@ -167,7 +167,7 @@
         </div>
       
         <div class="mb-4">
-            <label for="gender" class="block text-gray-700 font-medium mb-2">Gender at Birth</label>
+            <label for="gender" class="block text-[#3E73A6] font-semibold mb-2">Gender at Birth</label>
             <select
             id="gender"
             bind:value={gender}
@@ -181,7 +181,7 @@
         </div>
       
         <div class="mb-6">
-            <label for="symptom" class="block text-gray-700 font-medium mb-2">Symptom</label>
+            <label for="symptom" class="block text-[#3E73A6] font-semibold mb-2">Symptom</label>
             <div class="relative">
               <input 
                 type="text" 
@@ -210,7 +210,7 @@
       
         <button 
             type="submit" 
-            class="flex justify-end bg-gray-800 text-white py-2 px-4 rounded-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 disabled:opacity-50"
+            class="flex justify-end bg-[#3E73A6] text-white font-semibold py-2 px-4 rounded-md hover:bg-[#2E5A8C] focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 disabled:opacity-50"
             disabled={isLoading}>
             {isLoading ? 'Analyzing...' : 'Analyze Symptoms'}
         </button>
@@ -228,52 +228,52 @@
             </div>
         {:else if diagnosisResults.length > 0}
             <div class="mb-6">
-                <h3 class="text-xl font-semibold text-gray-800 mb-4">Diagnosis Results</h3>
+                <h3 class="text-xl font-bold text-gray-800 mb-4">Diagnosis Results</h3>
                 <div class="space-y-4">
                     {#each diagnosisResults as disease}
-                        <div class="p-6 bg-white rounded-lg shadow-sm border border-gray-200">
-                            <h4 class="text-lg font-medium text-gray-800 mb-2">{disease.name}</h4>
+                        <div class="p-6 bg-[#256099] rounded-[20px] shadow-xl border border-gray-200">
+                            <h4 class="text-lg font-bold text-[#FDFDFD] mb-2">{disease.name}</h4>
                             
                             <div class="space-y-3">
                                 {#if disease.background}
                                     <div>
-                                        <h5 class="font-medium text-gray-700">Background</h5>
-                                        <p class="text-gray-600">{disease.background}</p>
+                                        <h5 class="font-semibold text-[#B7CEE5]">Background</h5>
+                                        <p class="text-[#FDFDFD]">{disease.background}</p>
                                     </div>
                                 {/if}
                                 
                                 {#if disease.symptoms}
                                     <div>
-                                        <h5 class="font-medium text-gray-700">Symptoms</h5>
-                                        <p class="text-gray-600">{disease.symptoms}</p>
+                                        <h5 class="font-semibold text-[#B7CEE5]">Symptoms</h5>
+                                        <p class="text-[#FDFDFD]">{disease.symptoms}</p>
                                     </div>
                                 {/if}
                                 
                                 {#if disease.transmission}
                                     <div>
-                                        <h5 class="font-medium text-gray-700">Transmission</h5>
-                                        <p class="text-gray-600">{disease.transmission}</p>
+                                        <h5 class="font-semibold text-[#B7CEE5]">Transmission</h5>
+                                        <p class="text-[#FDFDFD]">{disease.transmission}</p>
                                     </div>
                                 {/if}
                                 
                                 {#if disease.testing}
                                     <div>
-                                        <h5 class="font-medium text-gray-700">Testing</h5>
-                                        <p class="text-gray-600">{disease.testing}</p>
+                                        <h5 class="font-semibold text-[#B7CEE5]">Testing</h5>
+                                        <p class="text-[#FDFDFD]">{disease.testing}</p>
                                     </div>
                                 {/if}
                                 
                                 {#if disease.treatment}
                                     <div>
-                                        <h5 class="font-medium text-gray-700">Treatment</h5>
-                                        <p class="text-gray-600">{disease.treatment}</p>
+                                        <h5 class="font-semibold text-[#B7CEE5]">Treatment</h5>
+                                        <p class="text-[#FDFDFD]">{disease.treatment}</p>
                                     </div>
                                 {/if}
                                 
                                 {#if disease.reference}
                                     <div>
-                                        <h5 class="font-medium text-gray-700">Reference</h5>
-                                        <p class="text-gray-600 text-sm">{disease.reference}</p>
+                                        <h5 class="font-semibold text-[#B7CEE5]">Reference</h5>
+                                        <p class="text-[#FDFDFD] text-sm">{disease.reference}</p>
                                     </div>
                                 {/if}
                             </div>
